@@ -12,6 +12,7 @@ public class Clan implements Serializable {
 		this.name = name;
 	}
 
+//	GETTER AND SETTER
 	/**
 	 * @return the name
 	 */
@@ -39,10 +40,6 @@ public class Clan implements Serializable {
 	public void setFirstPersonage(Personage firstPersonage) {
 		this.firstPersonage = firstPersonage;
 	}
-
-
-
-//	GETTER AND SETTER
 
 	
 //	METHODS
