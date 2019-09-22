@@ -10,8 +10,8 @@ class ClanTest {
 	@Test
 	public void exist() throws ExceptionRegistry  {
 		Clan a = new Clan("power");
-		Personage b = new Personage("naruto", "poderoso", null, 2.0);
-		Personage c = new Personage("camilo", "poderoso", null, 2.0);
+		Personage b = new Personage("naruto", "poderoso", null, 20);
+		Personage c = new Personage("camilo", "poderoso", null, 20);
 		a.addPersonage(b);
 		a.addPersonage(c);
 		boolean resultado = a.exist("naruto");
@@ -21,8 +21,8 @@ class ClanTest {
 	@Test
 	public void addPersonage() throws ExceptionRegistry {
 		Clan a = new Clan("power");
-		Personage b = new Personage("naruto", "poderoso", null, 2.0);
-		Personage c = new Personage("camilo", "poderoso", null, 2.0);
+		Personage b = new Personage("naruto", "poderoso", null, 20);
+		Personage c = new Personage("camilo", "poderoso", null, 20);
 		a.addPersonage(b);
 		a.addPersonage(c);
 		String resultado = a.printNames();

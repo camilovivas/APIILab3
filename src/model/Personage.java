@@ -3,19 +3,23 @@ package model;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.junit.jupiter.api.Test;
+
+import exception.ExceptionRegistry;
+
 public class Personage implements Serializable {
 	
 //	ATTRIBUTES
 	private String name;
 	private String personality;
 	private Date date;
-	private double power; 
+	private int power; 
 	private Personage next;
 	private Personage anterior;
 	private Technique FirstTechnique;
 	
 //	CONSTRUCTOR
-	public Personage(String name, String personality, Date date, double power) {
+	public Personage(String name, String personality, Date date, int power) {
 		this.name = name;
 		this.personality = personality;
 		this.date = date;
@@ -69,14 +73,14 @@ public class Personage implements Serializable {
 	/**
 	 * @return the power
 	 */
-	public double getPower() {
+	public int getPower() {
 		return power;
 	}
 
 	/**
 	 * @param power the power to set
 	 */
-	public void setPower(double power) {
+	public void setPower(int power) {
 		this.power = power;
 	}
 
@@ -125,14 +129,58 @@ public class Personage implements Serializable {
 	
 //	METHODS
 	
-	public void addTechnique(Technique a) {
-		
+	public void addTechnique(Technique a) throws ExceptionRegistry {
+		Technique next = FirstTechnique;
+		if(next == null) {
+			FirstTechnique = a;
+			a.setNext(null);
+			power(a.getFactor());
+		}
+		else {
+			if(exist(a.getName()) == false) {
+				FirstTechnique = a;
+				a.setNext(next);
+				power(a.getFactor());
+			}
+			else {
+				throw new ExceptionRegistry(a.getName());
+			}
+		}
 	}
 	
+	public void power(int a) {
+		int r = power*a;
+		setPower(r);
+	}
+	
+	public boolean exist(String name) {
+		Technique next = FirstTechnique;
+		boolean found = false;
+		while(next != null && !found) {
+			if(next.getName().equals(name)) {
+				found = true;
+			}
+			else {
+				next = next.getNext();
+			}
+		}
+		return found;
+	}
+	
+	public String printNames() {
+		Technique next = FirstTechnique;
+		String names = "";
+		while(next != null) {
+			names += next.getName()+" ";
+			next = next.getNext();
+		}
+		return names;
+	}
 	
 	public void organizeTechniqueWayUpward() {
 		
 	}
+	
 	
 	
 }
