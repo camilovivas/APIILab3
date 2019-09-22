@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 
+import exception.ExceptionRegistry;
+
 public class Clan implements Serializable {
 //	ATTRIBUTES
 	private String name;
@@ -59,7 +61,7 @@ public class Clan implements Serializable {
 //	METHODS
 	
 
-	public void addPersonage(Personage a) { 
+	public void addPersonage(Personage a) throws ExceptionRegistry { 
 		Personage next = firstPersonage;
 		if(next ==null) {
 			firstPersonage = a;
@@ -71,6 +73,9 @@ public class Clan implements Serializable {
 				firstPersonage = a;
 				a.setNext(next);
 				a.setAnterior(null);
+			}
+			else {
+				throw new ExceptionRegistry(a.getName());
 			}
 		}
 	}

@@ -1,5 +1,9 @@
 package exception;
 
-public class ExceptionRegistry {
+public class ExceptionRegistry extends Exception {
 
+	public ExceptionRegistry(String name) {
+		super(" Ya existe"+name);
+	}
+	
 }
