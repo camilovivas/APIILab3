@@ -1,7 +1,6 @@
 package model;
 
 import java.io.Serializable;
-import exception.*;
 
 public class Clan implements Serializable {
 //	ATTRIBUTES
@@ -60,7 +59,7 @@ public class Clan implements Serializable {
 //	METHODS
 	
 
-	public void addPersonage(Personage a)throws ExceptionRegistry {
+	public void addPersonage(Personage a) { 
 		Personage next = firstPersonage;
 		if(next ==null) {
 			firstPersonage = a;
@@ -73,9 +72,6 @@ public class Clan implements Serializable {
 				a.setNext(next);
 				a.setAnterior(null);
 			}
-			else {
-				throw new ExceptionRegistry(a.getName());
-			}
 		}
 	}
 	
@@ -83,7 +79,7 @@ public class Clan implements Serializable {
 	public boolean exist(String name) {
 		boolean found = false;
 		Personage next = firstPersonage;
-		while(next!=null) {
+		while(next!=null && !found) {
 			if(next.getName().equals(name)) {
 				found = true;
 			}

@@ -2,13 +2,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import exception.ExceptionRegistry;
 import model.*;
 
 class ClanTest {
 
-	
-	public void exist() throws ExceptionRegistry {
+	@Test
+	public void exist()  {
 		Clan a = new Clan("power");
 		Personage b = new Personage("naruto", "poderoso", null, 2.0);
 		Personage c = new Personage("camilo", "poderoso", null, 2.0);
@@ -19,7 +18,7 @@ class ClanTest {
 	}
 	
 	@Test
-	public void addPersonage() throws ExceptionRegistry {
+	public void addPersonage()  {
 		Clan a = new Clan("power");
 		Personage b = new Personage("naruto", "poderoso", null, 2.0);
 		Personage c = new Personage("camilo", "poderoso", null, 2.0);
