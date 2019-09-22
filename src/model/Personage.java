@@ -125,7 +125,14 @@ public class Personage implements Serializable {
 	
 //	METHODS
 	
+	public void addTechnique(Technique a) {
+		
+	}
 	
+	
+	public void organizeTechniqueWayUpward() {
+		
+	}
 	
 	
 }
