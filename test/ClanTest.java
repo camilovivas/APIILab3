@@ -8,7 +8,7 @@ import model.*;
 class ClanTest {
 
 	@Test
-	public void exist() throws ExceptionRegistry  {
+	public void existTest() throws ExceptionRegistry  {
 		Clan a = new Clan("power");
 		Personage b = new Personage("naruto", "poderoso", null, 20);
 		Personage c = new Personage("camilo", "poderoso", null, 20);
@@ -19,7 +19,7 @@ class ClanTest {
 	}
 	
 	@Test
-	public void addPersonage() throws ExceptionRegistry {
+	public void addPersonageTest() throws ExceptionRegistry {
 		Clan a = new Clan("power");
 		Personage b = new Personage("naruto", "poderoso", null, 20);
 		Personage c = new Personage("camilo", "poderoso", null, 20);
@@ -29,6 +29,17 @@ class ClanTest {
 		assertEquals("camilo naruto ", resultado);
 		
 	}
+	
+	public void lastTast() throws ExceptionRegistry {
+		Clan a = new Clan("power");
+		Personage b = new Personage("naruto", "poderoso", null, 20);
+		Personage c = new Personage("camilo", "poderoso", null, 20);
+		a.addPersonage(b);
+		a.addPersonage(c);
+		Personage result = a.last();
+		assertEquals("naruto", result);
+	}
+	
 	
 	
 	

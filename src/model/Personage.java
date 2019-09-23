@@ -6,6 +6,7 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 
 import exception.ExceptionRegistry;
+import sun.text.normalizer.CharTrie.FriendAgent;
 
 public class Personage implements Serializable {
 	
@@ -181,22 +182,25 @@ public class Personage implements Serializable {
 	}
 	
 	public void organizeTechniqueWayUpward() {
-		Technique next =  FirstTechnique.getNext();
+		Technique temp = FirstTechnique;
+		Technique next =  FirstTechnique;
 		Technique anterior = FirstTechnique;
 		boolean yes = false;
 		while(next != null) {
 			yes = false;
 			next = next.getNext();
+			
 			while(!yes) {// empieza desde 0 hasta que llega al anterior de next
 				if(anterior.getFactor()>next.getFactor()) {
+					temp= last(anterior);
 					anterior.setNext(next.getNext());
 					next.setNext(anterior);
+					temp.setNext(next);
 				}
+				anterior = last(anterior);
 				if(anterior == FirstTechnique) {
 					yes = true;
-				}
-				else {
-					anterior = last(next);
+					anterior = anterior.getNext();
 				}
 			}
 		}
