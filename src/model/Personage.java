@@ -128,6 +128,9 @@ public class Personage implements Serializable {
 
 	
 //	METHODS
+	public void deleteTechnique(String name) {
+		
+	}
 	
 	public void addTechnique(Technique a) throws ExceptionRegistry {
 		Technique next = FirstTechnique;
@@ -222,8 +225,5 @@ public class Personage implements Serializable {
 	}
 	
 	
-//			if(next.getFactor()<next.getNext().getFactor()) {
-//				
-//			}
 	
 

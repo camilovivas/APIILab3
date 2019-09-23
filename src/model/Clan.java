@@ -59,7 +59,9 @@ public class Clan implements Serializable {
 	}
 	
 //	METHODS
-	
+	public void deletePersonage(String name) {
+		
+	}
 
 	public void addPersonage(Personage a) throws ExceptionRegistry { 
 		Personage next = firstPersonage;
@@ -113,6 +115,7 @@ public class Clan implements Serializable {
 		while(!found) {
 			if(next.getNext() == null) {
 				retorno = next;
+				found = true;
 			}
 			else {
 				next = next.getNext();

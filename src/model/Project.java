@@ -39,5 +39,9 @@ public class Project {
 	public void addClan() {
 		
 	}
+	
+	public void deleteClan(String name) {
+		
+	}
 
 }
