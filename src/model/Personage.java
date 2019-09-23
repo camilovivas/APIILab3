@@ -178,9 +178,52 @@ public class Personage implements Serializable {
 	}
 	
 	public void organizeTechniqueWayUpward() {
+		Technique next =  FirstTechnique.getNext();
+		Technique anterior = FirstTechnique;
+		boolean yes = false;
+		while(next != null) {
+			yes = false;
+			next = next.getNext();
+			while(!yes) {// empieza desde 0 hasta que llega al anterior de next
+				if(anterior.getFactor()>next.getFactor()) {
+					anterior.setNext(next.getNext());
+					next.setNext(anterior);
+				}
+				if(anterior == FirstTechnique) {
+					yes = true;
+				}
+				else {
+					anterior = last(next);
+				}
+			}
+		}
+	}
 		
+			
+		public Technique last(Technique a){
+			Technique b = FirstTechnique;
+			Technique retorno = null;
+			boolean found = false;
+			if(a == b) {
+				retorno = b;
+			}
+			while(b!=null && !found) {
+				if(b.getNext() == a) {
+					found = true;
+					retorno = b;
+				}
+				else {
+					b = b.getNext();
+				}
+			}
+			return retorno;
+		}
+	
 	}
 	
 	
+//			if(next.getFactor()<next.getNext().getFactor()) {
+//				
+//			}
 	
-}
+

@@ -105,4 +105,25 @@ public class Clan implements Serializable {
 		
 		return names;
 	}
+	
+	public Personage last() {
+		Personage next = firstPersonage;
+		Personage retorno = null;
+		boolean found = false;
+		while(!found) {
+			if(next.getNext() == null) {
+				retorno = next;
+			}
+			else {
+				next = next.getNext();
+			}	
+		}
+		return retorno;
+	}
+	
+	public void organizePersaonages() {
+		for(Personage a = last(); a == firstPersonage; a.getAnterior()) {
+			
+		}
+	}
 }
