@@ -5,6 +5,7 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
+import exception.ExceptionNoFound;
 import exception.ExceptionRegistry;
 import sun.text.normalizer.CharTrie.FriendAgent;
 
@@ -132,17 +133,25 @@ public class Personage implements Serializable {
 	/**
 	 * this method delete a technique
 	 * @param name by Technique to delete
+	 * @throws ExceptionNoFound 
 	 */
-	public void deleteTechnique(String name) {
+	public void deleteTechnique(String name) throws ExceptionNoFound {
 		Technique next = FirstTechnique;
+		Technique temp1 = FirstTechnique;
 		boolean found = false;
 		if(exist(name)== true) {
 			while(next != null && !found) {
 				if(next.getName().compareToIgnoreCase(name) == 0) {
-					Technique temp = last(next);
-					temp.setNext(next.getNext());
-					next.setNext(null);
-					found = true;
+					if(next == temp1) {
+						FirstTechnique = next.getNext();
+						next.setNext(null);
+					}
+					else {						
+						Technique temp = last(next);
+						temp.setNext(next.getNext());
+						next.setNext(null);
+						found = true;
+					}
 				}
 				else {
 					next = next.getNext();
@@ -150,7 +159,7 @@ public class Personage implements Serializable {
 			}
 		}
 		else {
-//			exception
+			throw new ExceptionNoFound(name);
 		}
 	}
 	

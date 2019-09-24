@@ -2,6 +2,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import exception.ExceptionNoFound;
 import exception.ExceptionRegistry;
 import model.*;
 
@@ -15,7 +16,7 @@ class ClanTest {
 		a.addPersonage(b);
 		a.addPersonage(c);
 		boolean resultado = a.exist("naruto");
-		assertEquals(true, resultado) ;
+		assertTrue( resultado) ;
 	}
 	
 	@Test
@@ -42,7 +43,7 @@ class ClanTest {
 	}
 	
 	@Test
-	public void deletePersonageTest() throws ExceptionRegistry {
+	public void deletePersonageTest() throws ExceptionRegistry, ExceptionNoFound {
 		Clan a = new Clan("power");
 		Personage b = new Personage("naruto", "poderoso", null, 20);
 		Personage c = new Personage("camilo", "poderoso", null, 20);
@@ -56,7 +57,7 @@ class ClanTest {
 	}
 	
 	@Test
-	public void deletePersonageTest2() throws ExceptionRegistry {
+	public void deletePersonageTest2() throws ExceptionRegistry, ExceptionNoFound {
 		Clan a = new Clan("power");
 		Personage b = new Personage("naruto", "poderoso", null, 20);
 		Personage c = new Personage("camilo", "poderoso", null, 20);

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import org.junit.jupiter.api.Test;
 
+import exception.ExceptionNoFound;
 import exception.ExceptionRegistry;
 
 public class Clan implements Serializable {
@@ -79,8 +80,9 @@ public class Clan implements Serializable {
 	/**
 	 * this method delete a Personage
 	 * @param name name the Personage to delete
+	 * @throws ExceptionNoFound 
 	 */
-	public void deletePersonage(String name) {
+	public void deletePersonage(String name) throws ExceptionNoFound {
 		Personage temp1 = firstPersonage;
 		Personage next = firstPersonage;
 		boolean found = false;
@@ -107,7 +109,7 @@ public class Clan implements Serializable {
 			}
 		}
 		else {
-			//exeption
+			throw new ExceptionNoFound(name);
 		}
 	}
 

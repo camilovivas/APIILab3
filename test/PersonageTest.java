@@ -2,6 +2,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import exception.ExceptionNoFound;
 import exception.ExceptionRegistry;
 import model.*;
 
@@ -48,7 +49,7 @@ class PersonageTest {
 	}
 	
 	@Test
-	public void deleteTechiqueTest() throws ExceptionRegistry {
+	public void deleteTechiqueTest() throws ExceptionRegistry, ExceptionNoFound {
 		Personage a = new Personage("naruto", "poderoso", null, 20);
 		Technique b = new Technique("patada", 10);
 		Technique c = new Technique("puño", 5);

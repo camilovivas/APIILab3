@@ -58,13 +58,13 @@ public class Technique implements Serializable ,Comparable<Technique>{
 	}
 
 	@Override
-	public int compareTo(Technique o) {
+	public int compareTo(Technique o){
 		int retorno = 0;
 		int comparable = name.compareTo(o.getName());
 		if(comparable<0) {
 			retorno = -1;
 		}
-		else if(comparable == 0) {
+		else if(comparable == 0){
 			retorno = 0;
 		}
 		else {
