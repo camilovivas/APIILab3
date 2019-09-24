@@ -136,16 +136,21 @@ public class Personage implements Serializable {
 	public void deleteTechnique(String name) {
 		Technique next = FirstTechnique;
 		boolean found = false;
-		while(next != null && !found) {
-			if(next.getName().compareToIgnoreCase(name) == 0) {
-				Technique temp = last(next);
-				temp.setNext(next.getNext());
-				next.setNext(null);
-				found = true;
+		if(exist(name)== true) {
+			while(next != null && !found) {
+				if(next.getName().compareToIgnoreCase(name) == 0) {
+					Technique temp = last(next);
+					temp.setNext(next.getNext());
+					next.setNext(null);
+					found = true;
+				}
+				else {
+					next = next.getNext();
+				}
 			}
-			else {
-				next = next.getNext();
-			}
+		}
+		else {
+//			exception
 		}
 	}
 	

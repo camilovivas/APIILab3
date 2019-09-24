@@ -84,25 +84,30 @@ public class Clan implements Serializable {
 		Personage temp1 = firstPersonage;
 		Personage next = firstPersonage;
 		boolean found = false;
-		while(next != null &&  !found) {
-			if(next.getName().compareToIgnoreCase(name)== 0) {
-				if(next == temp1) {
-					firstPersonage = next.getNext();
-					firstPersonage.setAnterior(null);
-					found = true;
+		if(exist(name)== true) {
+			while(next != null &&  !found) {
+				if(next.getName().compareToIgnoreCase(name)== 0) {
+					if(next == temp1) {
+						firstPersonage = next.getNext();
+						firstPersonage.setAnterior(null);
+						found = true;
+					}
+					else {
+						Personage temp = next.getAnterior();
+						temp.setNext(next.getNext());
+						next.getNext().setAnterior(temp);
+						next.setAnterior(null);
+						next.setAnterior(null);
+						found = true;
+					}		
 				}
 				else {
-					Personage temp = next.getAnterior();
-					temp.setNext(next.getNext());
-					next.getNext().setAnterior(temp);
-					next.setAnterior(null);
-					next.setAnterior(null);
-					found = true;
-				}		
+					next = next.getNext();
+				}
 			}
-			else {
-				next = next.getNext();
-			}
+		}
+		else {
+			//exeption
 		}
 	}
 

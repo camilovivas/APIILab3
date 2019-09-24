@@ -75,6 +75,12 @@ public class Project {
 	}
 	
 	public void deleteClan(String name) {
+		if(exist(name)== true) {
+			
+		}
+		else {
+			//exception
+		}
 		
 	}
 	
