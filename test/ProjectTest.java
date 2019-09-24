@@ -1,10 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
 import org.junit.jupiter.api.Test;
-
 import exception.ExceptionNoFound;
 import exception.ExceptionRegistry;
 import model.Clan;
