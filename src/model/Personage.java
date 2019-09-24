@@ -129,10 +129,31 @@ public class Personage implements Serializable {
 
 	
 //	METHODS
+	/**
+	 * this method delete a technique
+	 * @param name by Technique to delete
+	 */
 	public void deleteTechnique(String name) {
-		
+		Technique next = FirstTechnique;
+		boolean found = false;
+		while(next != null && !found) {
+			if(next.getName().compareToIgnoreCase(name) == 0) {
+				Technique temp = last(next);
+				temp.setNext(next.getNext());
+				next.setNext(null);
+				found = true;
+			}
+			else {
+				next = next.getNext();
+			}
+		}
 	}
 	
+	/**
+	 * this method add a Technique 
+	 * @param a
+	 * @throws ExceptionRegistry
+	 */
 	public void addTechnique(Technique a) throws ExceptionRegistry {
 		Technique next = FirstTechnique;
 		if(next == null) {
@@ -152,11 +173,20 @@ public class Personage implements Serializable {
 		}
 	}
 	
+	/**
+	 * this method update the power
+	 * @param a factor by Technique
+	 */
 	public void power(int a) {
 		int r = power*a;
 		setPower(r);
 	}
 	
+	/**
+	 * this method check if a Technique exist
+	 * @param name
+	 * @return
+	 */
 	public boolean exist(String name) {
 		Technique next = FirstTechnique;
 		boolean found = false;
@@ -180,7 +210,7 @@ public class Personage implements Serializable {
 		}
 		return names;
 	}
-	
+	//TODO
 	public void organizeTechniqueWayUpward() {
 		Technique temp = FirstTechnique;
 		Technique next =  FirstTechnique;
@@ -207,6 +237,11 @@ public class Personage implements Serializable {
 	}
 		
 			
+		/**
+		 * this method found the last Technique by another Technique 
+		 * @param a Technique next
+		 * @return Technique last by Technique next
+		 */
 		public Technique last(Technique a){
 			Technique b = FirstTechnique;
 			Technique retorno = null;

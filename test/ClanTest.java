@@ -30,14 +30,43 @@ class ClanTest {
 		
 	}
 	
-	public void lastTast() throws ExceptionRegistry {
+	@Test
+	public void lastTest() throws ExceptionRegistry {
 		Clan a = new Clan("power");
 		Personage b = new Personage("naruto", "poderoso", null, 20);
 		Personage c = new Personage("camilo", "poderoso", null, 20);
 		a.addPersonage(b);
 		a.addPersonage(c);
 		Personage result = a.last();
-		assertEquals("naruto", result);
+		assertEquals("naruto", result.getName());
+	}
+	
+	@Test
+	public void deletePersonageTest() throws ExceptionRegistry {
+		Clan a = new Clan("power");
+		Personage b = new Personage("naruto", "poderoso", null, 20);
+		Personage c = new Personage("camilo", "poderoso", null, 20);
+		Personage d = new Personage("vivas", "poderoso", null, 20);
+		a.addPersonage(b);
+		a.addPersonage(c);
+		a.addPersonage(d);
+		a.deletePersonage("vivas");
+		String actual = a.printNames();
+		assertEquals("camilo naruto ", actual);
+	}
+	
+	@Test
+	public void deletePersonageTest2() throws ExceptionRegistry {
+		Clan a = new Clan("power");
+		Personage b = new Personage("naruto", "poderoso", null, 20);
+		Personage c = new Personage("camilo", "poderoso", null, 20);
+		Personage d = new Personage("vivas", "poderoso", null, 20);
+		a.addPersonage(b);
+		a.addPersonage(c);
+		a.addPersonage(d);
+		a.deletePersonage("camilo");
+		String actual = a.printNames();
+		assertEquals("vivas naruto ", actual);
 	}
 	
 	

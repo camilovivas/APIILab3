@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class Technique implements Serializable{
+public class Technique implements Serializable ,Comparable<Technique>{
 //	ATTRIBUTES
 	private String name;
 	private int factor;
@@ -55,6 +55,22 @@ public class Technique implements Serializable{
 	 */
 	public void setNext(Technique next) {
 		this.next = next;
+	}
+
+	@Override
+	public int compareTo(Technique o) {
+		int retorno = 0;
+		int comparable = name.compareTo(o.getName());
+		if(comparable<0) {
+			retorno = -1;
+		}
+		else if(comparable == 0) {
+			retorno = 0;
+		}
+		else {
+			retorno = 1;
+		}
+		return retorno;
 	}
 
 	

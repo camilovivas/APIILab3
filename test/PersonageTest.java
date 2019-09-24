@@ -46,5 +46,36 @@ class PersonageTest {
 		assertEquals("puño manotazo patada cabezaso ", actual);
 		
 	}
+	
+	@Test
+	public void deleteTechiqueTest() throws ExceptionRegistry {
+		Personage a = new Personage("naruto", "poderoso", null, 20);
+		Technique b = new Technique("patada", 10);
+		Technique c = new Technique("puño", 5);
+		Technique d = new Technique("cabezaso", 11);
+		Technique e = new Technique("manotazo", 8);
+		a.addTechnique(b);
+		a.addTechnique(c);
+		a.addTechnique(d);
+		a.addTechnique(e);
+		a.deleteTechnique("puño");
+		String actual = a.printNames();
+		assertEquals("manotazo cabezaso patada ", actual);
+	}
+	
+	@Test
+	public void lastTest() throws ExceptionRegistry {
+		Personage a = new Personage("naruto", "poderoso", null, 20);
+		Technique b = new Technique("patada", 10);
+		Technique c = new Technique("puño", 5);
+		Technique d = new Technique("cabezaso", 11);
+		Technique e = new Technique("manotazo", 8);
+		a.addTechnique(b);
+		a.addTechnique(c);
+		a.addTechnique(d);
+		a.addTechnique(e);
+		Technique actual = a.last(c);
+		assertEquals("cabezaso", actual.getName());
+	}
 
 }

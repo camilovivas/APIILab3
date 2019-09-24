@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 
+import org.junit.jupiter.api.Test;
+
 import exception.ExceptionRegistry;
 
 public class Clan implements Serializable {
@@ -9,6 +11,7 @@ public class Clan implements Serializable {
 	private String name;
 	private Personage firstPersonage;
 	private Clan nextClan;
+	private Clan anteriorClan;
 
 //	CONTRUCTOR
 	public Clan(String name) {
@@ -58,11 +61,56 @@ public class Clan implements Serializable {
 		this.nextClan = nextClan;
 	}
 	
-//	METHODS
-	public void deletePersonage(String name) {
-		
+/**
+	 * @return the anteriorClan
+	 */
+	public Clan getAnteriorClan() {
+		return anteriorClan;
 	}
 
+	/**
+	 * @param anteriorClan the anteriorClan to set
+	 */
+	public void setAnteriorClan(Clan anteriorClan) {
+		this.anteriorClan = anteriorClan;
+	}
+
+	//	METHODS
+	/**
+	 * this method delete a Personage
+	 * @param name name the Personage to delete
+	 */
+	public void deletePersonage(String name) {
+		Personage temp1 = firstPersonage;
+		Personage next = firstPersonage;
+		boolean found = false;
+		while(next != null &&  !found) {
+			if(next.getName().compareToIgnoreCase(name)== 0) {
+				if(next == temp1) {
+					firstPersonage = next.getNext();
+					firstPersonage.setAnterior(null);
+					found = true;
+				}
+				else {
+					Personage temp = next.getAnterior();
+					temp.setNext(next.getNext());
+					next.getNext().setAnterior(temp);
+					next.setAnterior(null);
+					next.setAnterior(null);
+					found = true;
+				}		
+			}
+			else {
+				next = next.getNext();
+			}
+		}
+	}
+
+	/**
+	 * this method add a Personage 
+	 * @param a Personage to add
+	 * @throws ExceptionRegistry
+	 */
 	public void addPersonage(Personage a) throws ExceptionRegistry { 
 		Personage next = firstPersonage;
 		if(next ==null) {
@@ -74,7 +122,7 @@ public class Clan implements Serializable {
 			if(exist(a.getName()) == false) {
 				firstPersonage = a;
 				a.setNext(next);
-				a.setAnterior(null);
+				next.setAnterior(a);
 			}
 			else {
 				throw new ExceptionRegistry(a.getName());
@@ -108,6 +156,10 @@ public class Clan implements Serializable {
 		return names;
 	}
 	
+	/**
+	 * this method found the last Personage
+	 * @return the last Personage
+	 */
 	public Personage last() {
 		Personage next = firstPersonage;
 		Personage retorno = null;
@@ -124,6 +176,7 @@ public class Clan implements Serializable {
 		return retorno;
 	}
 	
+	//TODO
 	public void organizePersaonages() {
 		for(Personage a = last(); a == firstPersonage; a.getAnterior()) {
 			
