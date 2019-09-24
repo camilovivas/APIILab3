@@ -138,6 +138,11 @@ public class Clan implements Serializable {
 	}
 	
 
+	/**
+	 * this method found if a Personage exist
+	 * @param name name to found
+	 * @return true if exist
+	 */
 	public boolean exist(String name) {
 		boolean found = false;
 		Personage next = firstPersonage;
@@ -156,7 +161,7 @@ public class Clan implements Serializable {
 		String names = "";
 		Personage next = firstPersonage;
 		while(next!= null) {
-			names += next.getName()+" ";
+			names += next.getName()+" "+"\n";
 			next = next.getNext();
 		}
 		

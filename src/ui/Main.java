@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import exception.ExceptionRegistry;
 import model.*;;
 
 /**
@@ -53,7 +54,7 @@ public class Main {
 	public void options(int i) {
 		switch(i) {
 		case 1:
-			
+			case1();
 			break;
 		case 2:
 			
@@ -70,6 +71,18 @@ public class Main {
 		case 6:
 			
 			break;
+		}
+	}
+	
+	public void case1() {
+		System.out.println("ingrese el nombre del clan");
+		String name = reader.next();
+		Clan a = new Clan(name);
+		try {
+			relation.addClan(a);
+			relation.saveAll();
+		} catch (ExceptionRegistry | IOException e) {
+			e.printStackTrace();
 		}
 	}
 	

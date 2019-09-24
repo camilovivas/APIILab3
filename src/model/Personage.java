@@ -219,7 +219,7 @@ public class Personage implements Serializable {
 		Technique next = FirstTechnique;
 		String names = "";
 		while(next != null) {
-			names += next.getName()+" ";
+			names += next.getName()+" "+"\n";
 			next = next.getNext();
 		}
 		return names;

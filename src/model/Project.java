@@ -71,8 +71,10 @@ public class Project {
 	 * this method add a Clan
 	 * @param a Clan to add
 	 * @throws ExceptionRegistry
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public void addClan(Clan a) throws ExceptionRegistry {
+	public void addClan(Clan a) throws ExceptionRegistry{
 		Clan next = firstClan;
 		if(next == null){
 			firstClan = a;
@@ -147,11 +149,17 @@ public class Project {
 		return found;
 	}
 	
+//	TODO
+	public Clan found(String name) {
+		
+		return null;
+	}
+	
 	public String printNames() {
 		Clan next = firstClan;
 		String names ="";
 		while(next != null) {
-			names += next.getName()+" ";
+			names += next.getName()+" "+"\n";
 			next = next.getNextClan();
 		}
 		return names;

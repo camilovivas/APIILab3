@@ -27,7 +27,7 @@ class ClanTest {
 		a.addPersonage(b);
 		a.addPersonage(c);
 		String resultado = a.printNames();
-		assertEquals("camilo naruto ", resultado);
+		assertEquals("camilo "+"\n"+"naruto "+"\n", resultado);
 		
 	}
 	
@@ -53,7 +53,7 @@ class ClanTest {
 		a.addPersonage(d);
 		a.deletePersonage("vivas");
 		String actual = a.printNames();
-		assertEquals("camilo naruto ", actual);
+		assertEquals("camilo "+"\n"+"naruto "+"\n", actual);
 	}
 	
 	@Test
@@ -67,7 +67,7 @@ class ClanTest {
 		a.addPersonage(d);
 		a.deletePersonage("camilo");
 		String actual = a.printNames();
-		assertEquals("vivas naruto ", actual);
+		assertEquals("vivas "+"\n"+"naruto "+"\n", actual);
 	}
 	
 	

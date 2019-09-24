@@ -29,7 +29,7 @@ class ProjectTest {
 		Project p = new Project();
 		p.chargeWorld();
 		String actual = p.printNames();
-		assertEquals("power ", actual);
+		assertEquals("power "+"\n", actual);
 	}
 	
 	//LOS DOS METODOS QUE LES COMENTE EL @TEST ES POR QUE CADA VEZ QUE EJECUTABA EL JUNIT
@@ -46,7 +46,7 @@ class ProjectTest {
 		p.addClan(c);
 		p.deleteClan("ranger");
 		String actual = p.printNames();
-		assertEquals("galaxy power ", actual);	
+		assertEquals("galaxy "+"\n"+"power "+"\n", actual);	
 	}
 	
 	@Test
@@ -59,7 +59,7 @@ class ProjectTest {
 		p.addClan(b);
 		p.addClan(c);
 		String actual = p.printNames();
-		assertEquals("galaxy ranger power ", actual);
+		assertEquals("galaxy "+"\n"+"ranger "+"\n"+"power "+"\n", actual);
 	}
 	
 	@Test

@@ -16,7 +16,7 @@ class PersonageTest {
 		a.addTechnique(b);
 		a.addTechnique(c);
 		String resultado = a.printNames();
-		assertEquals("puño patada ", resultado);
+		assertEquals("puño "+"\n"+"patada "+"\n", resultado);
 		
 	}
 	
@@ -44,7 +44,7 @@ class PersonageTest {
 		a.addTechnique(e);
 		a.organizeTechniqueWayUpward();
 		String actual = a.printNames();
-		assertEquals("puño manotazo patada cabezaso ", actual);
+		assertEquals("puño "+"\n"+"manotazo "+"\n"+"patada "+"\n"+"cabezaso "+"\n", actual);
 		
 	}
 	
@@ -61,7 +61,7 @@ class PersonageTest {
 		a.addTechnique(e);
 		a.deleteTechnique("puño");
 		String actual = a.printNames();
-		assertEquals("manotazo cabezaso patada ", actual);
+		assertEquals("manotazo "+"\n"+"cabezaso "+"\n"+"patada "+"\n", actual);
 	}
 	
 	@Test
