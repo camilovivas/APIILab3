@@ -189,8 +189,8 @@ public class Personage implements Serializable {
 		while(next != null) {
 			yes = false;
 			next = next.getNext();
-			
-			while(!yes) {// empieza desde 0 hasta que llega al anterior de next
+			anterior = last(next);			
+			while(!yes && next!= null) {// empieza desde 0 hasta que llega al anterior de next
 				if(anterior.getFactor()>next.getFactor()) {
 					temp= last(anterior);
 					anterior.setNext(next.getNext());
