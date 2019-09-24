@@ -11,6 +11,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import exception.ExceptionRegistry;
+
 public class Project {
 //	ATTRIBUTES 
 	
@@ -39,7 +41,7 @@ public class Project {
 //	METHODS
 	
 	public void saveAll() throws FileNotFoundException, IOException {
-		File archile = new File("./files/WorldSerializado.arc");
+		File archile = new File("./file/WorldSerializado.arc");
 		ObjectOutputStream a = new ObjectOutputStream(new FileOutputStream(archile));
 		a.writeObject(firstClan);
 		a.close();
@@ -47,18 +49,40 @@ public class Project {
 	
 
 	public void chargeWorld() throws FileNotFoundException, IOException, ClassNotFoundException {
-		File archive = new File("./files/WorldSerializado.arc");
+		File archive = new File("./file/WorldSerializado.arc");
 		ObjectInputStream a = new ObjectInputStream(new FileInputStream(archive));
 		firstClan = (Clan) a.readObject();
 		a.close();
 	}
 	
-	public void addClan() {
-		
+	public void addClan(Clan a) throws ExceptionRegistry {
+		Clan next = firstClan;
+		if(next == null){
+			firstClan = a;
+			a.setAnteriorClan(null);
+			a.setNextClan(null);
+		}
+		else {
+			if(exist(a.getName()) == false) {
+				firstClan = a;
+				a.setNextClan(next);
+				next.setAnteriorClan(a);
+			}
+			else {
+				throw new ExceptionRegistry(a.getName());
+			}
+		}
 	}
 	
 	public void deleteClan(String name) {
 		
+	}
+	
+	public boolean exist(String name) {
+		boolean found = false;
+		
+		
+		return found;
 	}
 	
 	/**
