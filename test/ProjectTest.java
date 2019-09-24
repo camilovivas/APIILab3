@@ -11,7 +11,7 @@ import model.*;
 
 class ProjectTest {
 
-	@Test
+//	@Test
 	public void saveAllTest() throws ExceptionRegistry, FileNotFoundException, IOException {
 		Project p = new Project();
 		Clan a = new Clan("power");
@@ -22,6 +22,14 @@ class ProjectTest {
 		a.addPersonage(c);
 		a.addPersonage(d);
 		p.saveAll();
+	}
+	
+	@Test
+	public void chargeWorldTest() throws FileNotFoundException, ClassNotFoundException, IOException {
+		Project p = new Project();
+		p.chargeWorld();
+		String actual = p.printNames();
+		assertEquals("power", actual);
 	}
 
 }

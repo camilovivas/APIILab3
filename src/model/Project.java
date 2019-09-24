@@ -85,6 +85,16 @@ public class Project {
 		return found;
 	}
 	
+	public String printNames() {
+		Clan next = firstClan;
+		String names ="";
+		while(next != null) {
+			names += next.getName();
+			next = next.getNextClan();
+		}
+		return names;
+	}
+	
 	/**
 	 * this method convert String to Date
 	 * @param date String to convert
