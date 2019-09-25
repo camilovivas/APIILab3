@@ -157,6 +157,27 @@ public class Clan implements Serializable {
 		return found;
 	}
 	
+	/**
+	 * this method found a Personage in the Clan
+	 * @param name name to Personage found
+	 * @return Personage found
+	 */
+	public Personage found(String name) {
+		Personage next = firstPersonage;
+		Personage retorno = null;
+		boolean found = false;
+		while(next != null && !found) {
+			if(next.getName().compareToIgnoreCase(name)== 0) {
+				retorno = next;
+				found = true;
+			}
+			else {
+				next = next.getNext();
+			}
+		}
+		return retorno;
+	}
+	
 	public String printNames() {
 		String names = "";
 		Personage next = firstPersonage;

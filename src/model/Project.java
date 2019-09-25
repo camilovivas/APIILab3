@@ -149,10 +149,30 @@ public class Project {
 		return found;
 	}
 	
-//	TODO
-	public Clan found(String name) {
-		
-		return null;
+
+	/**
+	 * this method search a Clan
+	 * @param name name by clan to search
+	 * @return clan search
+	 * @throws ExceptionNoFound
+	 */
+	public Clan found(String name) throws ExceptionNoFound {
+		Clan next = firstClan;
+		Clan retorno = null;
+		boolean found = false;
+		while(next!=null && !found) {
+			if(next.getName().compareToIgnoreCase(name)==0) {
+				retorno = next;
+				found = true;
+			}
+			else {
+				next = next.getNextClan();
+			}
+		}
+		if(next.getNextClan() == null && !found) {
+			throw new ExceptionNoFound(name);			
+		}
+		return retorno;
 	}
 	
 	public String printNames() {
@@ -163,6 +183,27 @@ public class Project {
 			next = next.getNextClan();
 		}
 		return names;
+	}
+	
+	/**
+	 * this method search a Personage in all clanes
+	 * @param name Person´s name to search
+	 * @return personage search
+	 */
+	public Personage foundPersonage(String name) {
+		Clan next = firstClan;
+		Personage f = null;
+		boolean found = false;
+		while(next != null && !found) {
+			 f = next.found(name);
+			if(f != null) {
+				found = true;
+			}
+			else {
+				next = next.getNextClan();
+			}
+		}
+		return f;
 	}
 	
 	/**
